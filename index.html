@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>IP Address Tracker</title>
 
@@ -12,7 +14,13 @@
 
   <!-- my CSS -->
   <link rel="stylesheet" href="styling.css">
+
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div class="hero">
 
@@ -20,46 +28,55 @@
 
       <h1 class="title">IP Address Tracker</h1>
 
-      <form action="https://geo.ipify.org/api/v2/country?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq&ipAddress=8.8.8.8" method="get">
-        <input id="input-el" type="text" placeholder="Search by IPv4 or IPv6 address" required name="ip-address">
-        <button id="button" type="submit"><img src="./images/icon-arrow.svg" alt="submit button"></button>
+      <!-- form -->
+      <form class="form d-flex" action="#">
+        <input id="input-el" class="form__input" type="text" placeholder="enter ip address">
+        <button id="button"><img class="svg-arrow" src="./images/icon-arrow.svg" alt="Search button"></button>
       </form>
 
       <div class="content">
         <div class="element">
-          <p class="heading">ip address</p>
-          <p id="ip-address-el">tbd</p>
+          <p class="heading">IP ADDRESS</p>
+          <p class="information" id="ip-address-el">192.212.174.101</p>
         </div>
+
+        <hr class="hr">
 
         <div class="element">
-          <p class="heading">location</p>
-          <p id="location-el">tbd</p>
+          <p class="heading">LOCATION</p>
+          <p class="information" id="location-el">BROOKLYN, NY 10001</p>
         </div>
+
+        <hr class="hr">
+
+        <div class="element country">
+          <p class="heading">COUNTRY</p>
+          <p class="information" id="country-el">US</p>
+        </div>
+
+        <hr class="hr">
 
         <div class="element">
-          <p class="heading">country</p>
-          <p id="country-el">tbd</p>
+          <p class="heading">TIMEZONE</p>
+          <p class="information" id="timezone-el">UTC -05:00</p>
         </div>
 
-        <div class="element"> 
-          <p class="heading">timezone</p>
-          <p id="timezone-el">tbd</p>
-        </div>
+        <hr class="hr">
 
         <div class="element">
-          <p class="heading">isp</p>
-          <p id="isp-el">tbd</p>
+          <p class="heading">ISP</p>
+          <p class="information" id="isp-el">SpaceX Starlink</p>
         </div>
       </div>
-      
-    </div>
 
+    </div>
   </div>
 
   <!-- map div -->
-  <div class="map" id="map">  </div>
+  <div class="map" id="map"> </div>
 
   <!-- my script.js -->
   <script src="./script.js"></script>
 </body>
+
 </html>

@@ -1,8 +1,13 @@
-*, ::before, ::after {
+*, *::before, *::after {
     box-sizing: border-box;
 }
+:root {
+    --dark: hsl(0, 0%, 17%);
+    --gray: hsl(0, 0%, 59%);
+  }
 body {
     margin: 0;
+    font-family: 'Rubik', sans-serif;
 }
 
 .d-flex {
@@ -10,12 +15,14 @@ body {
 }
 .column {
     flex-direction: column;
+    gap: 1.5em;
 }
 
 .hero {
     height: 35vh;
-    background: url(./images/pattern-bg.png);
     background-size: cover;
+    background-image: linear-gradient(to right,	rgba(30,144,255, 0.2), rgba(255, 255, 255, 0.15)), url(./images/pattern-bg.png);
+    /* z-index: 1; */
 }
 .container {
     color: #fff;
@@ -25,15 +32,130 @@ body {
 }
 
 .title {
-    width: 80%;
+    margin: 0 auto;
+    width: 100%;
     margin: 0;
-    padding: 1em;
+    padding-top: 1em;
+    font-weight: 400;
+    font-size: 1.5em;
 }
 .content{
     background-color: #fff;
     color: black;
+    border-radius: 15px;
+    padding: 1em;
 }
+.heading{
+    font-size: .5em;
+    color: var(--gray);
+    font-weight: 600;
+    margin-bottom: 0;
+    letter-spacing: .125em;
+}
+.information{
+    margin-top: 0.25em;
+    color: var(--dark);
+    font-weight: 500;
+    font-size: 1.125em;
+}
+
+.form {
+    width: 98%;
+    margin: 0 auto;
+}
+
+.form__input {
+    color: var(--dark);
+    font-size: 1.15rem;
+    margin: 0 auto;
+    padding: .5em;
+    padding-left: 1.25em;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: none;
+    width: 100%;
+}
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+button {
+    background-color: black;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: none;
+}
+button:active{
+    background-color: var(--dark);
+}
+.svg-arrow {
+    margin: 0 auto;
+    padding: 1em;
+    background-color: black;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.svg-arrow:active{
+    background-color: var(--dark);
+}
+
 .map {
-    /* z-index: -1; */
+    position: static;
     height: 65vh;
+    z-index: -1;
+}
+
+.border {
+    border: 1px solid red;
+}
+.hr {
+    display: none;
+}
+.country{
+    display: none;
+}
+
+
+@media(min-width: 900px) {
+    .column{
+        gap: 3em;
+    }
+    .vl {
+        border-left: 6px solid --gray;
+        height: 500px;
+    }
+    .title{
+        font-size: 2em;
+    }
+    .form{
+        margin: 0 auto;
+        width: 600px;
+    }
+    .content {
+        margin: 0 auto;
+        display: flex;
+        padding: 1.5em 3em 1.5em 3em;
+        justify-content: space-around;
+        width: 90%;
+    }
+    .heading{
+        font-size: .75em;
+    }
+    .hr {
+        display: block;
+    }
+    button{
+        width: 12%;
+    }
+    .form__input {
+        padding: 0.75em;
+        padding-left: 1.5em;
+        font-size: 1.2rem;
+        width: 100%;
+    }
+    .country{
+        display: block;
+    }
 }

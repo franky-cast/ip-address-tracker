@@ -73,8 +73,8 @@ function getLocation(url) {
 
         // dom manipulation
         ipAddressEl.innerHTML = ip
-        locationEl.innerHTML = `${municipality}, ${state} ${zipCode}`
-        countryEl.innerHTML = nation
+        locationEl.innerHTML = `${municipality}, ${state}, ${zipCode}`
+        
         timezoneEl.innerHTML = zoneTime
         ispEl.innerHTML = serviceProvider
 
