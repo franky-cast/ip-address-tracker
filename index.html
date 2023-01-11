@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>IP Address Tracker</title>
+
+  <!-- leaflet css and script -->
+  <link rel="stylesheet" href="./leaflet/leaflet.css" />
+  <script src="./leaflet/leaflet.js"></script>
+
+  <!-- my CSS -->
+  <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+  <div class="hero">
+
+    <div class="container d-flex column">
+
+      <h1 class="title">IP Address Tracker</h1>
+
+      <form action="https://geo.ipify.org/api/v2/country?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq&ipAddress=8.8.8.8" method="get">
+        <input id="input-el" type="text" placeholder="Search by IPv4 or IPv6 address" required name="ip-address">
+        <button id="button" type="submit"><img src="./images/icon-arrow.svg" alt="submit button"></button>
+      </form>
+
+      <div class="content">
+        <div class="element">
+          <p class="heading">ip address</p>
+          <p id="ip-address-el">tbd</p>
+        </div>
+
+        <div class="element">
+          <p class="heading">location</p>
+          <p id="location-el">tbd</p>
+        </div>
+
+        <div class="element">
+          <p class="heading">country</p>
+          <p id="country-el">tbd</p>
+        </div>
+
+        <div class="element"> 
+          <p class="heading">timezone</p>
+          <p id="timezone-el">tbd</p>
+        </div>
+
+        <div class="element">
+          <p class="heading">isp</p>
+          <p id="isp-el">tbd</p>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+
+  <!-- map div -->
+  <div class="map" id="map">  </div>
+
+  <!-- my script.js -->
+  <script src="./script.js"></script>
+</body>
+</html>

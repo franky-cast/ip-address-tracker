@@ -1,0 +1,38 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+
+.d-flex {
+    display: flex;
+}
+.column {
+    flex-direction: column;
+}
+
+.hero {
+    height: 35vh;
+    background: url(./images/pattern-bg.png);
+    background-size: cover;
+}
+.container {
+    color: #fff;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title {
+    width: 80%;
+    margin: 0;
+    padding: 1em;
+}
+.content{
+    background-color: #fff;
+    color: black;
+}
+.map {
+    height: 65vh;
+}
