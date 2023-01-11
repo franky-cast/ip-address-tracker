@@ -34,5 +34,6 @@ body {
     color: black;
 }
 .map {
+    /* z-index: -1; */
     height: 65vh;
 }
