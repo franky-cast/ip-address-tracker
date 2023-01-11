@@ -8,18 +8,18 @@ const countryEl = document.getElementById("country-el")
 const ispEl = document.getElementById("isp-el")
 
 // fecth variables
-let ip
-let municipality
-let state
-let zipCode
-let nation
-let zoneTime
-let serviceProvider
-let latitude = 51.505
-let longtitude = -0.09
+// let ip
+// let municipality
+// let state
+// let zipCode
+// let nation
+// let zoneTime
+// let serviceProvider
+// let latitude = 
+// let longtitude = 
 
 // map variables
-let geoCoordinates = [latitude, longtitude]
+let geoCoordinates = [51.505, -0.09]
 const zoomLevel = 13
 
 // // initialize map & set view to our chosen GEO coordinates & zoom level
@@ -60,26 +60,29 @@ function getLocation(url) {
         let responseObj = location
         console.log(responseObj)
 
-        // stores location into variables
-        ip = responseObj.ip
-        municipality = responseObj.location.city
-        state = responseObj.location.region
-        zipCode = responseObj.location.postalCode
-        nation = responseObj.location.country
-        zoneTime = responseObj.location.timezone
-        serviceProvider = responseObj.isp
-        latitude = responseObj.location.lat
-        longtitude = responseObj.location.lng
+        // option #1: destructures the object
+        const {ip, location:{city}, location:{region}, location:{postalCode}, location:{country}, location:{timezone}, isp, location:{lat}, location:{lng}} = responseObj
+
+        // option #2: stores object methods into variables
+        // ip = responseObj.ip
+        // municipality = responseObj.location.city
+        // state = responseObj.location.region
+        // zipCode = responseObj.location.postalCode
+        // nation = responseObj.location.country
+        // zoneTime = responseObj.location.timezone
+        // serviceProvider = responseObj.isp
+        // latitude = responseObj.location.lat
+        // longtitude = responseObj.location.lng
 
         // dom manipulation
         ipAddressEl.innerHTML = ip
-        locationEl.innerHTML = `${municipality}, ${state}, ${zipCode}`
-        
-        timezoneEl.innerHTML = zoneTime
-        ispEl.innerHTML = serviceProvider
+        locationEl.innerHTML = `${city}, ${region}, ${postalCode}`
+        countryEl.innerHTML = country
+        timezoneEl.innerHTML = timezone
+        ispEl.innerHTML = isp
 
         // updates map on UI
-        geoCoordinates = [latitude, longtitude]
+        geoCoordinates = [lat, lng]
         marker.setLatLng(geoCoordinates)
         map.setView(geoCoordinates, zoomLevel, {
             animate: true,
