@@ -7,17 +7,6 @@ const timezoneEl = document.getElementById("timezone-el")
 const countryEl = document.getElementById("country-el")
 const ispEl = document.getElementById("isp-el")
 
-// fecth variables
-// let ip
-// let municipality
-// let state
-// let zipCode
-// let nation
-// let zoneTime
-// let serviceProvider
-// let latitude = 
-// let longtitude = 
-
 // map variables
 let geoCoordinates = [51.505, -0.09]
 const zoomLevel = 13
@@ -91,6 +80,7 @@ function getLocation(url) {
         })
     })
 }
+
 // validates the format of the ipv4 or ipv6 address
 function validateIpAddress(ipAddress) {
     if (ipAddress.match(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/) || ipAddress.match(/^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$/)) {
