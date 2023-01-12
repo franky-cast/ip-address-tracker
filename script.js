@@ -8,11 +8,11 @@ const countryEl = document.getElementById("country-el")
 const ispEl = document.getElementById("isp-el")
 
 // map variables
-let geoCoordinates = [51.505, -0.09]
+let geoCoordinates
 const zoomLevel = 13
 
 // // initialize map & set view to our chosen GEO coordinates & zoom level
-let map = L.map('map').setView(geoCoordinates, zoomLevel)
+let map = L.map('map')
 
 // // adding a marker to the geo cordinates on the map
 let marker = L.marker(geoCoordinates).addTo(map)
@@ -23,24 +23,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-// event listener for submit button
-submitButton.addEventListener("click", function () {
-    // if user entered something, validate it
-    if (inputEl.value) {
-        const address = validateIpAddress(inputEl.value)
-        // if ip address valid, add it to url in get request
-        if (address) {
-            getLocation(`https://geo.ipify.org/api/v2/country,city?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq&ipAddress=${inputEl.value}`)
-            inputEl.value = ""
-        } else {
-            alert("You have entered an invalid IP address!")
-            inputEl.value = ""
-        }
-    } else {
-        // if user did not input anything
-        getLocation("https://geo.ipify.org/api/v2/country,city?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq")
-    }
-})
 // submits HTTP request to IP Geolocation API
 function getLocation(url) {
     fetch(url).then(response => {
@@ -80,7 +62,6 @@ function getLocation(url) {
         })
     })
 }
-
 // validates the format of the ipv4 or ipv6 address
 function validateIpAddress(ipAddress) {
     if (ipAddress.match(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/) || ipAddress.match(/^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$/)) {
@@ -89,3 +70,24 @@ function validateIpAddress(ipAddress) {
         return false
     }
 }
+// event listener for submit button
+submitButton.addEventListener("click", function () {
+    // if user entered something, validate it
+    if (inputEl.value) {
+        const address = validateIpAddress(inputEl.value)
+        // if ip address valid, add it to url in get request
+        if (address) {
+            getLocation(`https://geo.ipify.org/api/v2/country,city?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq&ipAddress=${inputEl.value}`)
+            inputEl.value = ""
+        } else {
+            alert("You have entered an invalid IP address!")
+            inputEl.value = ""
+        }
+    } else {
+        // if user did not input anything
+        getLocation("https://geo.ipify.org/api/v2/country,city?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq")
+    }
+})
+
+// user sees their own IP address on the map on the initial page load
+getLocation("https://geo.ipify.org/api/v2/country,city?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq")
