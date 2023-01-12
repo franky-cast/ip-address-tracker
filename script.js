@@ -11,13 +11,13 @@ const ispEl = document.getElementById("isp-el")
 let geoCoordinates
 const zoomLevel = 13
 
-// // initialize map & set view to our chosen GEO coordinates & zoom level
-let map = L.map('map')
+// initialize map
+const map = L.map('map')
 
-// // adding a marker to the geo cordinates on the map
-let marker = L.marker(geoCoordinates).addTo(map)
+// adding a marker to the map
+let marker = L.marker(null).addTo(map)
 
-// // tile layer (OpenStreetMap) on map
+// tile layer (OpenStreetMap) on map
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -75,7 +75,7 @@ submitButton.addEventListener("click", function () {
     // if user entered something, validate it
     if (inputEl.value) {
         const address = validateIpAddress(inputEl.value)
-        // if ip address valid, add it to url in get request
+        // if ip address valid, add it to url in http request
         if (address) {
             getLocation(`https://geo.ipify.org/api/v2/country,city?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq&ipAddress=${inputEl.value}`)
             inputEl.value = ""
@@ -84,10 +84,10 @@ submitButton.addEventListener("click", function () {
             inputEl.value = ""
         }
     } else {
-        // if user did not input anything
+        // if user did not input anything, http request is made with the client's ip address by default
         getLocation("https://geo.ipify.org/api/v2/country,city?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq")
     }
 })
 
-// user sees their own IP address on the map on the initial page load
+// user sees location of their own IP address on initial page load
 getLocation("https://geo.ipify.org/api/v2/country,city?apiKey=at_9SrUcFOnbAIhvMwIifMbo0rJeFVdq")
