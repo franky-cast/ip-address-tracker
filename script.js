@@ -23,26 +23,15 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-// submits HTTP request to IP Geolocation API
-function getLocation(url) {
-    fetch(url).then(response => {
-        return response.json();
-    }).then(location => {
-        console.log(location)
+// using async and await
+async function getLocation(url){
+    // send http get request to IPGeolocation API
+    try {
+        let response = await fetch(url)
+        let data = await response.json()
 
-        // option #1: destructures the object
-        const {ip, location:{city}, location:{region}, location:{postalCode}, location:{country}, location:{timezone}, isp, location:{lat}, location:{lng}} = location
-
-        // option #2: stores object methods into variables
-        // ip = location.ip
-        // municipality = location.location.city
-        // state = location.location.region
-        // zipCode = location.location.postalCode
-        // nation = location.location.country
-        // zoneTime = location.location.timezone
-        // serviceProvider = location.isp
-        // latitude = location.location.lat
-        // longtitude = location.location.lng
+        // destructuring returned object
+        const {ip, location:{city}, location:{region}, location:{postalCode}, location:{country}, location:{timezone}, isp, location:{lat}, location:{lng}} = data
 
         // dom manipulation
         ipAddressEl.innerHTML = ip
@@ -59,11 +48,10 @@ function getLocation(url) {
             duration: 1.5,
             easeLinearity: 0.2
         })
-    })
-    .catch(error => {
-        console.log(error)
+    } catch (error) {
+        console.error(error)
         alert(error)
-    })
+    }
 }
 // validates the format of the ipv4 or ipv6 address
 function validateIpAddress(ipAddress) {
