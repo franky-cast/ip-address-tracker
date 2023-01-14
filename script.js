@@ -60,6 +60,10 @@ function getLocation(url) {
             easeLinearity: 0.2
         })
     })
+    .catch(error => {
+        console.log(error)
+        alert(error)
+    })
 }
 // validates the format of the ipv4 or ipv6 address
 function validateIpAddress(ipAddress) {
