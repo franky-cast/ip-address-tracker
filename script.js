@@ -28,22 +28,21 @@ function getLocation(url) {
     fetch(url).then(response => {
         return response.json();
     }).then(location => {
-        let responseObj = location
-        console.log(responseObj)
+        console.log(location)
 
         // option #1: destructures the object
-        const {ip, location:{city}, location:{region}, location:{postalCode}, location:{country}, location:{timezone}, isp, location:{lat}, location:{lng}} = responseObj
+        const {ip, location:{city}, location:{region}, location:{postalCode}, location:{country}, location:{timezone}, isp, location:{lat}, location:{lng}} = location
 
         // option #2: stores object methods into variables
-        // ip = responseObj.ip
-        // municipality = responseObj.location.city
-        // state = responseObj.location.region
-        // zipCode = responseObj.location.postalCode
-        // nation = responseObj.location.country
-        // zoneTime = responseObj.location.timezone
-        // serviceProvider = responseObj.isp
-        // latitude = responseObj.location.lat
-        // longtitude = responseObj.location.lng
+        // ip = location.ip
+        // municipality = location.location.city
+        // state = location.location.region
+        // zipCode = location.location.postalCode
+        // nation = location.location.country
+        // zoneTime = location.location.timezone
+        // serviceProvider = location.isp
+        // latitude = location.location.lat
+        // longtitude = location.location.lng
 
         // dom manipulation
         ipAddressEl.innerHTML = ip
