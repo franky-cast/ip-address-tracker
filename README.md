@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: https://ip-address-stalker.netlify.app
+- Live Site URL: https://ip-address-tracer.netlify.app/
 
 ## My process
 
