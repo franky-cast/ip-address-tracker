@@ -43,6 +43,8 @@ Users should be able to:
 
 ### What I learned
 
+This challenge helped me gain familiarity with API's and handling promises with the fetch() function. Excellent opportunity to use both the .them() method and asnyc/await syntax.
+
 De-constructing the object that is returned after submitting an HTTP request to an API makes things a lot simpler.
 
 ```js
